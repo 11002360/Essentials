@@ -1,6 +1,6 @@
 //Maya ASCII 2027 scene
-//Name: Crate.ma
-//Last modified: Tue, Sep 15, 2026 02:33:38 PM
+//Name: UV1.ma
+//Last modified: Tue, Sep 15, 2026 02:34:59 PM
 //Codeset: 1252
 requires maya "2027";
 requires "mtoa" "5.6.1.1";
@@ -10,18 +10,18 @@ fileInfo "product" "Maya 2027";
 fileInfo "version" "2027";
 fileInfo "cutIdentifier" "202604221258-70da84b25e";
 fileInfo "osv" "Windows 11 Enterprise v2009 (Build: 26200)";
-fileInfo "UUID" "8C364C75-424E-FF92-1D5F-3A9350417031";
+fileInfo "UUID" "22CC04E0-4943-8F2A-9257-7289157642A8";
 fileInfo "license" "education";
 createNode transform -s -n "persp";
 	rename -uid "23492B0D-4EC8-7E5E-3CC2-D88638567741";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -1.095120293090873 4.7269648704816367 1.2925918052608698 ;
-	setAttr ".r" -type "double3" -39.938352729583784 63.799999999995549 7.2038788644626548e-15 ;
+	setAttr ".t" -type "double3" 0.40251620722562453 7.6752358650374939 9.2600717586151973 ;
+	setAttr ".r" -type "double3" -29.738352729584001 27.399999999995632 2.6868378843548136e-15 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "49B082F4-4931-7CE8-B221-90AAC4F3ED32";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 5.1363330007409598;
+	setAttr ".coi" 12.590933731544721;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -4104,4 +4104,4 @@ connectAttr "polySurfaceShape1.iog.og[0]" ":initialShadingGroup.dsm" -na;
 connectAttr "polySurfaceShape1.iog.og[1]" ":initialShadingGroup.dsm" -na;
 connectAttr "groupId6.msg" ":initialShadingGroup.gn" -na;
 connectAttr "groupId7.msg" ":initialShadingGroup.gn" -na;
-// End of Crate.ma
+// End of UV1.ma
