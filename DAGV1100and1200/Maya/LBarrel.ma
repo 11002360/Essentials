@@ -1,29 +1,29 @@
 //Maya ASCII 2027 scene
 //Name: LBarrel.ma
-//Last modified: Wed, Sep 23, 2026 10:52:46 AM
+//Last modified: Wed, Sep 23, 2026 11:07:40 AM
 //Codeset: 1252
 requires maya "2027";
 requires "stereoCamera" "10.0";
-requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" -nodeType "aiNormalMap"
-		 -nodeType "aiImagerDenoiserOidn" "mtoa" "5.6.1.1";
+requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" -nodeType "aiAreaLight"
+		 -nodeType "aiNormalMap" -nodeType "aiImagerDenoiserOidn" "mtoa" "5.6.1.1";
 currentUnit -l centimeter -a degree -t film;
 fileInfo "application" "maya";
 fileInfo "product" "Maya 2027";
 fileInfo "version" "2027";
 fileInfo "cutIdentifier" "202604221258-70da84b25e";
 fileInfo "osv" "Windows 11 Enterprise v2009 (Build: 26200)";
-fileInfo "UUID" "4E8F7AA8-42C4-7EE7-BF6F-73BAEA82CE63";
+fileInfo "UUID" "608F7EE7-4703-4B1B-0CDA-22AE78A4FEF6";
 fileInfo "license" "education";
 createNode transform -s -n "persp";
 	rename -uid "23492B0D-4EC8-7E5E-3CC2-D88638567741";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 4.8946611001422422 12.182144119885811 14.418667263992074 ;
-	setAttr ".r" -type "double3" -35.138352729335843 370.6000000003537 0 ;
+	setAttr ".t" -type "double3" 10.666878771938636 46.508847141428795 59.713008813630623 ;
+	setAttr ".r" -type "double3" -35.13835272930357 356.59999999959098 -1.9913517977438898e-16 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "49B082F4-4931-7CE8-B221-90AAC4F3ED32";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 16.37141019235381;
+	setAttr ".coi" 73.667754577429406;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -1361,6 +1361,24 @@ createNode mesh -n "polySurfaceShape2" -p "pCylinder1";
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
+createNode transform -n "aiAreaLight1";
+	rename -uid "899B453F-4E20-2EA9-9C68-DAAAB0B0048F";
+	setAttr ".t" -type "double3" -8.0065556896261523 1.2445146391137203 0.59149502162434264 ;
+	setAttr ".r" -type "double3" 0 -85.328298773532381 0 ;
+createNode aiAreaLight -n "aiAreaLightShape1" -p "aiAreaLight1";
+	rename -uid "F75A47DB-49B6-F589-888B-C3A219A3C240";
+	addAttr -ci true -h true -sn "aal" -ln "attributeAliasList" -dt "attributeAlias";
+	setAttr -k off ".v";
+	setAttr ".csh" no;
+	setAttr ".rcsh" no;
+	setAttr ".ai_exposure" 15;
+	setAttr ".ai_translator" -type "string" "quad";
+	setAttr ".aal" -type "attributeAlias" 4 "exposure" "aiExposure" "normalize" "aiNormalize" ;
+createNode transform -n "pointLight1";
+	rename -uid "95783099-472B-617F-7D5E-F98D903E634A";
+createNode pointLight -n "pointLightShape1" -p "pointLight1";
+	rename -uid "9516B52B-4480-3D3E-4252-799461B99C71";
+	setAttr -k off ".v";
 createNode lightLinker -s -n "lightLinker1";
 	rename -uid "0ACD8965-4F4D-9872-3050-C6A1D7529150";
 	setAttr -s 3 ".lnk";
@@ -2085,7 +2103,6 @@ createNode openPBRSurface -n "BarrelMatte";
 createNode shadingEngine -n "openPBRSurface1SG";
 	rename -uid "9396E279-4159-2255-B747-618C814F543B";
 	setAttr ".ihi" 0;
-	setAttr -s 2 ".dsm";
 	setAttr ".ro" yes;
 createNode materialInfo -n "materialInfo1";
 	rename -uid "23EE58F1-4B22-136A-2BB4-79842B869BCC";
@@ -2124,6 +2141,7 @@ createNode aiNormalMap -n "aiNormalMap1";
 	rename -uid "45541866-4DAB-E520-E1A4-D089A9AFF2D2";
 createNode aiOptions -s -n "defaultArnoldRenderOptions";
 	rename -uid "932A2F1A-4062-4AFD-EB41-B59973BEBA34";
+	addAttr -ci true -sn "ARV_options" -ln "ARV_options" -dt "string";
 	setAttr ".version" -type "string" "5.6.1.1";
 createNode aiAOVFilter -s -n "defaultArnoldFilter";
 	rename -uid "4F603BF3-43EA-91A4-D24E-258A5ADC2E63";
@@ -2138,11 +2156,11 @@ createNode aiAOVDriver -s -n "defaultArnoldDisplayDriver";
 createNode aiImagerDenoiserOidn -s -n "defaultArnoldDenoiser";
 	rename -uid "D72AC23D-4C2F-67A1-3AC6-099EBEA8117D";
 createNode nodeGraphEditorInfo -n "hyperShadePrimaryNodeEditorSavedTabsInfo";
-	rename -uid "0A7DE9BB-496A-09DA-AD36-0889158C27A4";
+	rename -uid "FAAB2C8D-4ADC-9483-5842-1E8FDA829EE0";
 	setAttr ".tgi[0].tn" -type "string" "Untitled_1";
-	setAttr ".tgi[0].vl" -type "double2" -657.92671965747434 -577.76635637465529 ;
-	setAttr ".tgi[0].vh" -type "double2" 306.31597883287606 362.70979673036891 ;
-	setAttr -s 13 ".tgi[0].ni";
+	setAttr ".tgi[0].vl" -type "double2" -1041.5866665920157 -752.87128105215231 ;
+	setAttr ".tgi[0].vh" -type "double2" 384.40605652751663 637.97373410316538 ;
+	setAttr -s 15 ".tgi[0].ni";
 	setAttr ".tgi[0].ni[0].x" -632.3858642578125;
 	setAttr ".tgi[0].ni[0].y" -317.03753662109375;
 	setAttr ".tgi[0].ni[0].nvs" 1923;
@@ -2161,7 +2179,7 @@ createNode nodeGraphEditorInfo -n "hyperShadePrimaryNodeEditorSavedTabsInfo";
 	setAttr ".tgi[0].ni[5].x" -524.4376220703125;
 	setAttr ".tgi[0].ni[5].y" 474.53860473632812;
 	setAttr ".tgi[0].ni[5].nvs" 1923;
-	setAttr ".tgi[0].ni[6].x" -165.57418823242188;
+	setAttr ".tgi[0].ni[6].x" -163.06362915039062;
 	setAttr ".tgi[0].ni[6].y" 318.57144165039062;
 	setAttr ".tgi[0].ni[6].nvs" 1971;
 	setAttr ".tgi[0].ni[7].x" 72.857139587402344;
@@ -2179,9 +2197,15 @@ createNode nodeGraphEditorInfo -n "hyperShadePrimaryNodeEditorSavedTabsInfo";
 	setAttr ".tgi[0].ni[11].x" -683.56182861328125;
 	setAttr ".tgi[0].ni[11].y" 131.51779174804688;
 	setAttr ".tgi[0].ni[11].nvs" 1923;
-	setAttr ".tgi[0].ni[12].x" -399.88491821289062;
-	setAttr ".tgi[0].ni[12].y" -439.53604125976562;
+	setAttr ".tgi[0].ni[12].x" 75.714286804199219;
+	setAttr ".tgi[0].ni[12].y" -110;
 	setAttr ".tgi[0].ni[12].nvs" 1923;
+	setAttr ".tgi[0].ni[13].x" -375.71429443359375;
+	setAttr ".tgi[0].ni[13].y" 258.57144165039062;
+	setAttr ".tgi[0].ni[13].nvs" 2050;
+	setAttr ".tgi[0].ni[14].x" -399.88491821289062;
+	setAttr ".tgi[0].ni[14].y" -439.53604125976562;
+	setAttr ".tgi[0].ni[14].nvs" 1923;
 select -ne :time1;
 	setAttr ".o" 1;
 	setAttr ".unw" 1;
@@ -2202,6 +2226,8 @@ select -ne :postProcessList1;
 select -ne :defaultRenderUtilityList1;
 	setAttr -s 6 ".u";
 select -ne :defaultRenderingList1;
+select -ne :lightList1;
+	setAttr -s 2 ".l";
 select -ne :defaultTextureList1;
 	setAttr -s 5 ".tx";
 select -ne :standardSurface1;
@@ -2220,6 +2246,8 @@ select -ne :defaultRenderGlobals;
 	setAttr ".dss" -type "string" "openPBR_shader1";
 select -ne :defaultResolution;
 	setAttr ".pa" 1;
+select -ne :defaultLightSet;
+	setAttr -s 2 ".dsm";
 select -ne :defaultColorMgtGlobals;
 	setAttr ".cfe" yes;
 	setAttr ".cfp" -type "string" "<MAYA_RESOURCES>/OCIO-configs/Maya2022-default/config.ocio";
@@ -2232,6 +2260,8 @@ select -ne :defaultColorMgtGlobals;
 select -ne :hardwareRenderGlobals;
 	setAttr ".ctrs" 256;
 	setAttr ".btrs" 512;
+select -ne :ikSystem;
+	setAttr -s 4 ".sol";
 connectAttr "polyTweakUV11.out" "pCylinderShape1.i";
 connectAttr "polyTweakUV11.uvtk[0]" "pCylinderShape1.uvst[0].uvtw";
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
@@ -2426,7 +2456,11 @@ connectAttr "place2dTexture6.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[
 		;
 connectAttr "CrateMat_Barrel_MAT_Metallic_Raw_2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[11].dn"
 		;
-connectAttr "aiNormalMap1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[12].dn"
+connectAttr "aiAreaLightShape1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[12].dn"
+		;
+connectAttr "pointLightShape1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[13].dn"
+		;
+connectAttr "aiNormalMap1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[14].dn"
 		;
 connectAttr "openPBRSurface1SG.pa" ":renderPartition.st" -na;
 connectAttr "BarrelMatte.msg" ":defaultShaderList1.s" -na;
@@ -2437,6 +2471,8 @@ connectAttr "place2dTexture5.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "place2dTexture6.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "aiNormalMap1.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "defaultRenderLayer.msg" ":defaultRenderingList1.r" -na;
+connectAttr "aiAreaLightShape1.ltd" ":lightList1.l" -na;
+connectAttr "pointLightShape1.ltd" ":lightList1.l" -na;
 connectAttr "CrateMat_Barrel_MAT_Height_Raw_1.msg" ":defaultTextureList1.tx" -na
 		;
 connectAttr "CrateMat_Barrel_MAT_Normal_Raw_1.msg" ":defaultTextureList1.tx" -na
@@ -2447,4 +2483,6 @@ connectAttr "CrateMat_Barrel_MAT_BaseColor_sRGB_1.msg" ":defaultTextureList1.tx"
 		 -na;
 connectAttr "CrateMat_Barrel_MAT_Metallic_Raw_2.msg" ":defaultTextureList1.tx" -na
 		;
+connectAttr "aiAreaLight1.iog" ":defaultLightSet.dsm" -na;
+connectAttr "pointLight1.iog" ":defaultLightSet.dsm" -na;
 // End of LBarrel.ma
