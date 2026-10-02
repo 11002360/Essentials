@@ -1,29 +1,30 @@
 //Maya ASCII 2027 scene
 //Name: LBarrel.ma
-//Last modified: Wed, Sep 23, 2026 11:07:40 AM
+//Last modified: Mon, Sep 28, 2026 10:32:01 AM
 //Codeset: 1252
 requires maya "2027";
 requires "stereoCamera" "10.0";
 requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" -nodeType "aiAreaLight"
 		 -nodeType "aiNormalMap" -nodeType "aiImagerDenoiserOidn" "mtoa" "5.6.1.1";
+requires "stereoCamera" "10.0";
 currentUnit -l centimeter -a degree -t film;
 fileInfo "application" "maya";
 fileInfo "product" "Maya 2027";
 fileInfo "version" "2027";
 fileInfo "cutIdentifier" "202604221258-70da84b25e";
 fileInfo "osv" "Windows 11 Enterprise v2009 (Build: 26200)";
-fileInfo "UUID" "608F7EE7-4703-4B1B-0CDA-22AE78A4FEF6";
+fileInfo "UUID" "31B72F15-45C2-3EE4-5CD9-8D839880465F";
 fileInfo "license" "education";
 createNode transform -s -n "persp";
 	rename -uid "23492B0D-4EC8-7E5E-3CC2-D88638567741";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 10.666878771938636 46.508847141428795 59.713008813630623 ;
-	setAttr ".r" -type "double3" -35.13835272930357 356.59999999959098 -1.9913517977438898e-16 ;
+	setAttr ".t" -type "double3" -4.72884157930066 8.9757106698031368 21.125691218630088 ;
+	setAttr ".r" -type "double3" -24.338352729323017 346.99999999954497 4.0802704183168674e-16 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "49B082F4-4931-7CE8-B221-90AAC4F3ED32";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 73.667754577429406;
+	setAttr ".coi" 20.295471209839221;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -91,7 +92,7 @@ createNode mesh -n "pCylinderShape1" -p "pCylinder1";
 	setAttr -k off ".v";
 	setAttr ".vir" yes;
 	setAttr ".vif" yes;
-	setAttr ".pv" -type "double2" 0.35905414819717407 0.32402839511632919 ;
+	setAttr ".pv" -type "double2" 0.15925741195678711 0.10690593943581916 ;
 	setAttr ".uvst[0].uvsn" -type "string" "map1";
 	setAttr ".cuvs" -type "string" "map1";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
@@ -1363,7 +1364,7 @@ createNode mesh -n "polySurfaceShape2" -p "pCylinder1";
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
 createNode transform -n "aiAreaLight1";
 	rename -uid "899B453F-4E20-2EA9-9C68-DAAAB0B0048F";
-	setAttr ".t" -type "double3" -8.0065556896261523 1.2445146391137203 0.59149502162434264 ;
+	setAttr ".t" -type "double3" -7.5219646460902085 1.3382704186525536 0.55418221497989539 ;
 	setAttr ".r" -type "double3" 0 -85.328298773532381 0 ;
 createNode aiAreaLight -n "aiAreaLightShape1" -p "aiAreaLight1";
 	rename -uid "F75A47DB-49B6-F589-888B-C3A219A3C240";
@@ -1371,7 +1372,7 @@ createNode aiAreaLight -n "aiAreaLightShape1" -p "aiAreaLight1";
 	setAttr -k off ".v";
 	setAttr ".csh" no;
 	setAttr ".rcsh" no;
-	setAttr ".ai_exposure" 15;
+	setAttr ".ai_exposure" 9.7727270126342773;
 	setAttr ".ai_translator" -type "string" "quad";
 	setAttr ".aal" -type "attributeAlias" 4 "exposure" "aiExposure" "normalize" "aiNormalize" ;
 createNode transform -n "pointLight1";
@@ -1379,10 +1380,11 @@ createNode transform -n "pointLight1";
 createNode pointLight -n "pointLightShape1" -p "pointLight1";
 	rename -uid "9516B52B-4480-3D3E-4252-799461B99C71";
 	setAttr -k off ".v";
+	setAttr ".us" no;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "0ACD8965-4F4D-9872-3050-C6A1D7529150";
-	setAttr -s 3 ".lnk";
-	setAttr -s 3 ".slnk";
+	rename -uid "D7050E28-477E-BE44-ED74-F99D6BC9ABDD";
+	setAttr -s 4 ".lnk";
+	setAttr -s 4 ".slnk";
 createNode UsdDefaultSettings -n "UsdDefaultRenderSettings";
 	rename -uid "4D55CD0C-4200-60DC-4DF0-7F8D6E94E36A";
 	setAttr ".srl" -type "string" "#usda 1.0\n(\n    renderSettingsPrimPath = \"/Render/SceneRenderSettings\"\n)\n\ndef Scope \"Render\"\n{\n    def RenderSettings \"SceneRenderSettings\"\n    {\n        custom string adskUsd:externalCamera = \"|persp\" (\n            displayName = \"External Camera\"\n        )\n        rel products = </Render/BeautyProduct>\n    }\n\n    def RenderVar \"color\"\n    {\n        uniform string sourceName = \"color\"\n    }\n\n    def RenderProduct \"BeautyProduct\"\n    {\n        rel orderedVars = </Render/color>\n        token productName = \"./default.png\"\n    }\n}\n\n";
@@ -1390,16 +1392,16 @@ createNode UsdDefaultSettings -n "UsdDefaultRenderSettings";
 	setAttr ".asp" -type "string" "UsdDefaultRenderSettings,/Render/SceneRenderSettings";
 lockNode -l 1 ;
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "B8041FEF-4D39-7927-0A46-9A85CB821133";
+	rename -uid "77D7CC83-4553-770C-F710-03A6C2A525C8";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "2380A169-477A-5F15-3483-EA8CABDB32E4";
+	rename -uid "43CFBF73-41D7-CB20-794B-B19883D87B2A";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "03C2B5E2-40E7-190D-8E01-A3886DC6FB3D";
+	rename -uid "AE0135D2-4544-E416-7BD0-DA860D9CC8DC";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "94B9EC33-493F-35A8-BE1C-DC82C92CE0AC";
 	setAttr ".ufem" -type "stringArray" 0  ;
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "052DE91E-46AB-FD6D-20B1-88A7BCDE3E6B";
+	rename -uid "18CA2356-41F0-8BF4-CA08-A1A76C4FFBD5";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "6759ECBD-44F2-0DDB-139D-69ACB81C8BF7";
 	setAttr ".g" yes;
@@ -2143,6 +2145,7 @@ createNode aiOptions -s -n "defaultArnoldRenderOptions";
 	rename -uid "932A2F1A-4062-4AFD-EB41-B59973BEBA34";
 	addAttr -ci true -sn "ARV_options" -ln "ARV_options" -dt "string";
 	setAttr ".version" -type "string" "5.6.1.1";
+	setAttr ".ARV_options" -type "string" "Test Resolution=100%;Camera=perspShape;Color Management.Gamma=1;Color Management.Exposure=0;Background.BG=BG Color;Background.Color=0 0 0;Background.Image=;Background.Scale=1 1;Background.Offset=0 0;Background.Apply Color Management=1;Foreground.Enable FG=0;Foreground.Image=;Foreground.Scale=1 1;Foreground.Offset=0 0;Foreground.Apply Color Management=1;Interactive.FPS=16";
 createNode aiAOVFilter -s -n "defaultArnoldFilter";
 	rename -uid "4F603BF3-43EA-91A4-D24E-258A5ADC2E63";
 	setAttr ".ai_translator" -type "string" "gaussian";
@@ -2155,57 +2158,136 @@ createNode aiAOVDriver -s -n "defaultArnoldDisplayDriver";
 	setAttr ".output_mode" 0;
 createNode aiImagerDenoiserOidn -s -n "defaultArnoldDenoiser";
 	rename -uid "D72AC23D-4C2F-67A1-3AC6-099EBEA8117D";
+createNode displacementShader -n "displacementShader1";
+	rename -uid "1AAEEC4E-4F79-EFA1-E269-4C95CC19DC33";
+createNode shadingEngine -n "displacementShader1SG";
+	rename -uid "77023675-481C-A618-383F-64966D8719C6";
+	setAttr ".ihi" 0;
+	setAttr ".ro" yes;
+createNode materialInfo -n "materialInfo2";
+	rename -uid "D4D40671-40E5-5EDF-6055-F89CDDC01A6A";
+createNode animCurveTL -n "pCylinder1_translateX";
+	rename -uid "C8370C9D-434E-67B0-391F-A784BFFC2679";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+createNode animCurveTL -n "pCylinder1_translateY";
+	rename -uid "E847D8C1-4129-6AE4-C7AD-A1AC18CD10B1";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+createNode animCurveTL -n "pCylinder1_translateZ";
+	rename -uid "D200C702-40FD-8164-6609-108F3C098F47";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+createNode animCurveTU -n "pCylinder1_visibility";
+	rename -uid "BCEFCCB7-4C77-B0DF-0C58-B7AD6FD2F893";
+	setAttr ".tan" 9;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+	setAttr ".kot[0]"  5;
+	setAttr ".kox[0]"  0;
+	setAttr ".koy[0]"  0;
+createNode animCurveTA -n "pCylinder1_rotateX";
+	rename -uid "C11B1621-4690-7A45-8E17-0DB84C648CFC";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+createNode animCurveTA -n "pCylinder1_rotateY";
+	rename -uid "56555083-44EA-7C62-5812-30BA5E0F0D32";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+createNode animCurveTA -n "pCylinder1_rotateZ";
+	rename -uid "6DBFA717-4292-88E4-7673-52939D561A84";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 0;
+createNode animCurveTU -n "pCylinder1_scaleX";
+	rename -uid "E8DBA108-499C-A875-8049-2CA28A5F117A";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+createNode animCurveTU -n "pCylinder1_scaleY";
+	rename -uid "ACAA380D-4210-2C4A-029D-649D329D7464";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+createNode animCurveTU -n "pCylinder1_scaleZ";
+	rename -uid "6069C626-4313-BDBC-1B09-CBAF652677BD";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr ".ktv[0]"  1 1;
+createNode file -n "CrateMat_Barrel_MAT_Emissive_1";
+	rename -uid "88D29CE2-423E-ECF1-E0B2-BB9375EB55A2";
+	setAttr ".ftn" -type "string" "C:/Users/11002360/Documents/Adobe/Adobe Substance 3D Painter/export/CrateMat_Barrel_MAT_Emissive.png";
+	setAttr ".cs" -type "string" "sRGB Encoded Rec.709 (sRGB)";
+createNode place2dTexture -n "place2dTexture7";
+	rename -uid "F5929B36-4325-C163-E431-2F818D2EB139";
 createNode nodeGraphEditorInfo -n "hyperShadePrimaryNodeEditorSavedTabsInfo";
-	rename -uid "FAAB2C8D-4ADC-9483-5842-1E8FDA829EE0";
+	rename -uid "C9D5C0A2-446E-5792-13DD-A0B46094D714";
 	setAttr ".tgi[0].tn" -type "string" "Untitled_1";
-	setAttr ".tgi[0].vl" -type "double2" -1041.5866665920157 -752.87128105215231 ;
-	setAttr ".tgi[0].vh" -type "double2" 384.40605652751663 637.97373410316538 ;
-	setAttr -s 15 ".tgi[0].ni";
-	setAttr ".tgi[0].ni[0].x" -632.3858642578125;
-	setAttr ".tgi[0].ni[0].y" -317.03753662109375;
+	setAttr ".tgi[0].vl" -type "double2" -719.64889405721124 -710.49060523559353 ;
+	setAttr ".tgi[0].vh" -type "double2" 413.83293071441165 -84.854981341205374 ;
+	setAttr -s 19 ".tgi[0].ni";
+	setAttr ".tgi[0].ni[0].x" -635.4320068359375;
+	setAttr ".tgi[0].ni[0].y" 332.54598999023438;
 	setAttr ".tgi[0].ni[0].nvs" 1923;
-	setAttr ".tgi[0].ni[1].x" -745.8662109375;
-	setAttr ".tgi[0].ni[1].y" 474.53860473632812;
+	setAttr ".tgi[0].ni[1].x" -344.3265380859375;
+	setAttr ".tgi[0].ni[1].y" -459.90744018554688;
 	setAttr ".tgi[0].ni[1].nvs" 1923;
-	setAttr ".tgi[0].ni[2].x" -894.337890625;
-	setAttr ".tgi[0].ni[2].y" -140.48605346679688;
+	setAttr ".tgi[0].ni[2].x" -683.56182861328125;
+	setAttr ".tgi[0].ni[2].y" 134.1368408203125;
 	setAttr ".tgi[0].ni[2].nvs" 1923;
-	setAttr ".tgi[0].ni[3].x" -841.93115234375;
-	setAttr ".tgi[0].ni[3].y" -317.03753662109375;
+	setAttr ".tgi[0].ni[3].x" -914.27093505859375;
+	setAttr ".tgi[0].ni[3].y" 280.52133178710938;
 	setAttr ".tgi[0].ni[3].nvs" 1923;
-	setAttr ".tgi[0].ni[4].x" -659.3284912109375;
-	setAttr ".tgi[0].ni[4].y" -75.976852416992188;
+	setAttr ".tgi[0].ni[4].x" 413.61526489257812;
+	setAttr ".tgi[0].ni[4].y" -175.89820861816406;
 	setAttr ".tgi[0].ni[4].nvs" 1923;
-	setAttr ".tgi[0].ni[5].x" -524.4376220703125;
-	setAttr ".tgi[0].ni[5].y" 474.53860473632812;
+	setAttr ".tgi[0].ni[5].x" -632.3858642578125;
+	setAttr ".tgi[0].ni[5].y" -317.03753662109375;
 	setAttr ".tgi[0].ni[5].nvs" 1923;
-	setAttr ".tgi[0].ni[6].x" -163.06362915039062;
-	setAttr ".tgi[0].ni[6].y" 318.57144165039062;
-	setAttr ".tgi[0].ni[6].nvs" 1971;
-	setAttr ".tgi[0].ni[7].x" 72.857139587402344;
-	setAttr ".tgi[0].ni[7].y" 318.57144165039062;
+	setAttr ".tgi[0].ni[6].x" -659.3284912109375;
+	setAttr ".tgi[0].ni[6].y" -75.976852416992188;
+	setAttr ".tgi[0].ni[6].nvs" 1923;
+	setAttr ".tgi[0].ni[7].x" 75.714286804199219;
+	setAttr ".tgi[0].ni[7].y" -110;
 	setAttr ".tgi[0].ni[7].nvs" 1923;
-	setAttr ".tgi[0].ni[8].x" -914.27093505859375;
-	setAttr ".tgi[0].ni[8].y" 280.52133178710938;
+	setAttr ".tgi[0].ni[8].x" -59.940387725830078;
+	setAttr ".tgi[0].ni[8].y" -428.62338256835938;
 	setAttr ".tgi[0].ni[8].nvs" 1923;
-	setAttr ".tgi[0].ni[9].x" -692.84234619140625;
-	setAttr ".tgi[0].ni[9].y" 280.52133178710938;
+	setAttr ".tgi[0].ni[9].x" -927.059326171875;
+	setAttr ".tgi[0].ni[9].y" 112.84408569335938;
 	setAttr ".tgi[0].ni[9].nvs" 1923;
-	setAttr ".tgi[0].ni[10].x" -927.059326171875;
-	setAttr ".tgi[0].ni[10].y" 112.84408569335938;
+	setAttr ".tgi[0].ni[10].x" 189.79212951660156;
+	setAttr ".tgi[0].ni[10].y" -362.53768920898438;
 	setAttr ".tgi[0].ni[10].nvs" 1923;
-	setAttr ".tgi[0].ni[11].x" -683.56182861328125;
-	setAttr ".tgi[0].ni[11].y" 131.51779174804688;
+	setAttr ".tgi[0].ni[11].x" -621.84576416015625;
+	setAttr ".tgi[0].ni[11].y" -469.08389282226562;
 	setAttr ".tgi[0].ni[11].nvs" 1923;
-	setAttr ".tgi[0].ni[12].x" 75.714286804199219;
-	setAttr ".tgi[0].ni[12].y" -110;
+	setAttr ".tgi[0].ni[12].x" -524.4376220703125;
+	setAttr ".tgi[0].ni[12].y" 474.53860473632812;
 	setAttr ".tgi[0].ni[12].nvs" 1923;
-	setAttr ".tgi[0].ni[13].x" -375.71429443359375;
-	setAttr ".tgi[0].ni[13].y" 258.57144165039062;
-	setAttr ".tgi[0].ni[13].nvs" 2050;
-	setAttr ".tgi[0].ni[14].x" -399.88491821289062;
-	setAttr ".tgi[0].ni[14].y" -439.53604125976562;
+	setAttr ".tgi[0].ni[13].x" -841.93115234375;
+	setAttr ".tgi[0].ni[13].y" -317.03753662109375;
+	setAttr ".tgi[0].ni[13].nvs" 1923;
+	setAttr ".tgi[0].ni[14].x" -821.05096435546875;
+	setAttr ".tgi[0].ni[14].y" -557.977294921875;
 	setAttr ".tgi[0].ni[14].nvs" 1923;
+	setAttr ".tgi[0].ni[15].x" -130.29391479492188;
+	setAttr ".tgi[0].ni[15].y" 326.76388549804688;
+	setAttr ".tgi[0].ni[15].nvs" 1971;
+	setAttr ".tgi[0].ni[16].x" 401.16586303710938;
+	setAttr ".tgi[0].ni[16].y" 703.898681640625;
+	setAttr ".tgi[0].ni[16].nvs" 2050;
+	setAttr ".tgi[0].ni[17].x" -745.8662109375;
+	setAttr ".tgi[0].ni[17].y" 474.53860473632812;
+	setAttr ".tgi[0].ni[17].nvs" 1923;
+	setAttr ".tgi[0].ni[18].x" -894.337890625;
+	setAttr ".tgi[0].ni[18].y" -140.48605346679688;
+	setAttr ".tgi[0].ni[18].nvs" 1923;
 select -ne :time1;
 	setAttr ".o" 1;
 	setAttr ".unw" 1;
@@ -2217,19 +2299,19 @@ select -ne :hardwareRenderingGlobals;
 	setAttr ".fprt" yes;
 	setAttr ".rtfm" 1;
 select -ne :renderPartition;
-	setAttr -s 3 ".st";
+	setAttr -s 4 ".st";
 select -ne :renderGlobalsList1;
 select -ne :defaultShaderList1;
-	setAttr -s 7 ".s";
+	setAttr -s 8 ".s";
 select -ne :postProcessList1;
 	setAttr -s 2 ".p";
 select -ne :defaultRenderUtilityList1;
-	setAttr -s 6 ".u";
+	setAttr -s 7 ".u";
 select -ne :defaultRenderingList1;
 select -ne :lightList1;
 	setAttr -s 2 ".l";
 select -ne :defaultTextureList1;
-	setAttr -s 5 ".tx";
+	setAttr -s 6 ".tx";
 select -ne :standardSurface1;
 	setAttr ".bc" -type "float3" 0.40000001 0.40000001 0.40000001 ;
 	setAttr ".sr" 0.5;
@@ -2262,14 +2344,26 @@ select -ne :hardwareRenderGlobals;
 	setAttr ".btrs" 512;
 select -ne :ikSystem;
 	setAttr -s 4 ".sol";
+connectAttr "pCylinder1_translateX.o" "pCylinder1.tx";
+connectAttr "pCylinder1_translateY.o" "pCylinder1.ty";
+connectAttr "pCylinder1_translateZ.o" "pCylinder1.tz";
+connectAttr "pCylinder1_visibility.o" "pCylinder1.v";
+connectAttr "pCylinder1_rotateX.o" "pCylinder1.rx";
+connectAttr "pCylinder1_rotateY.o" "pCylinder1.ry";
+connectAttr "pCylinder1_rotateZ.o" "pCylinder1.rz";
+connectAttr "pCylinder1_scaleX.o" "pCylinder1.sx";
+connectAttr "pCylinder1_scaleY.o" "pCylinder1.sy";
+connectAttr "pCylinder1_scaleZ.o" "pCylinder1.sz";
 connectAttr "polyTweakUV11.out" "pCylinderShape1.i";
 connectAttr "polyTweakUV11.uvtk[0]" "pCylinderShape1.uvst[0].uvtw";
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" "openPBRSurface1SG.message" ":defaultLightSet.message";
+relationship "link" ":lightLinker1" "displacementShader1SG.message" ":defaultLightSet.message";
 relationship "shadowLink" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "shadowLink" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
 relationship "shadowLink" ":lightLinker1" "openPBRSurface1SG.message" ":defaultLightSet.message";
+relationship "shadowLink" ":lightLinker1" "displacementShader1SG.message" ":defaultLightSet.message";
 connectAttr "layerManager.dli[0]" "defaultLayer.id";
 connectAttr "renderLayerManager.rlmi[0]" "defaultRenderLayer.rlid";
 connectAttr "polySurfaceShape2.o" "polyPlanarProj1.ip";
@@ -2292,8 +2386,10 @@ connectAttr "CrateMat_Barrel_MAT_BaseColor_sRGB_1.oc" "BarrelMatte.bc";
 connectAttr "CrateMat_Barrel_MAT_Metallic_Raw_2.oa" "BarrelMatte.m";
 connectAttr "CrateMat_Barrel_MAT_Roughness_Raw_1.oa" "BarrelMatte.sr";
 connectAttr "aiNormalMap1.out" "BarrelMatte.n";
+connectAttr "CrateMat_Barrel_MAT_Emissive_1.oc" "BarrelMatte.ec";
 connectAttr "BarrelMatte.oc" "openPBRSurface1SG.ss";
 connectAttr "pCylinderShape1.iog" "openPBRSurface1SG.dsm" -na;
+connectAttr "displacementShader1SG.ss" "openPBRSurface1SG.ds";
 connectAttr "openPBRSurface1SG.msg" "materialInfo1.sg";
 connectAttr "BarrelMatte.msg" "materialInfo1.m";
 connectAttr "CrateMat_Barrel_MAT_BaseColor_sRGB_1.msg" "materialInfo1.t" -na;
@@ -2432,44 +2528,80 @@ connectAttr ":defaultArnoldDisplayDriver.msg" ":defaultArnoldRenderOptions.drive
 		 -na;
 connectAttr ":defaultArnoldFilter.msg" ":defaultArnoldRenderOptions.filt";
 connectAttr ":defaultArnoldDriver.msg" ":defaultArnoldRenderOptions.drvr";
-connectAttr "CrateMat_Barrel_MAT_Roughness_Raw_1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[0].dn"
+connectAttr "CrateMat_Barrel_MAT_Height_Raw_1.oa" "displacementShader1.d";
+connectAttr "displacementShader1.d" "displacementShader1SG.ds";
+connectAttr "displacementShader1SG.msg" "materialInfo2.sg";
+connectAttr ":defaultColorMgtGlobals.cme" "CrateMat_Barrel_MAT_Emissive_1.cme";
+connectAttr ":defaultColorMgtGlobals.cfe" "CrateMat_Barrel_MAT_Emissive_1.cmcf";
+connectAttr ":defaultColorMgtGlobals.cfp" "CrateMat_Barrel_MAT_Emissive_1.cmcp";
+connectAttr ":defaultColorMgtGlobals.wsn" "CrateMat_Barrel_MAT_Emissive_1.ws";
+connectAttr "place2dTexture7.c" "CrateMat_Barrel_MAT_Emissive_1.c";
+connectAttr "place2dTexture7.tf" "CrateMat_Barrel_MAT_Emissive_1.tf";
+connectAttr "place2dTexture7.rf" "CrateMat_Barrel_MAT_Emissive_1.rf";
+connectAttr "place2dTexture7.mu" "CrateMat_Barrel_MAT_Emissive_1.mu";
+connectAttr "place2dTexture7.mv" "CrateMat_Barrel_MAT_Emissive_1.mv";
+connectAttr "place2dTexture7.s" "CrateMat_Barrel_MAT_Emissive_1.s";
+connectAttr "place2dTexture7.wu" "CrateMat_Barrel_MAT_Emissive_1.wu";
+connectAttr "place2dTexture7.wv" "CrateMat_Barrel_MAT_Emissive_1.wv";
+connectAttr "place2dTexture7.re" "CrateMat_Barrel_MAT_Emissive_1.re";
+connectAttr "place2dTexture7.of" "CrateMat_Barrel_MAT_Emissive_1.of";
+connectAttr "place2dTexture7.r" "CrateMat_Barrel_MAT_Emissive_1.ro";
+connectAttr "place2dTexture7.n" "CrateMat_Barrel_MAT_Emissive_1.n";
+connectAttr "place2dTexture7.vt1" "CrateMat_Barrel_MAT_Emissive_1.vt1";
+connectAttr "place2dTexture7.vt2" "CrateMat_Barrel_MAT_Emissive_1.vt2";
+connectAttr "place2dTexture7.vt3" "CrateMat_Barrel_MAT_Emissive_1.vt3";
+connectAttr "place2dTexture7.vc1" "CrateMat_Barrel_MAT_Emissive_1.vc1";
+connectAttr "place2dTexture7.o" "CrateMat_Barrel_MAT_Emissive_1.uv";
+connectAttr "place2dTexture7.ofs" "CrateMat_Barrel_MAT_Emissive_1.fs";
+connectAttr "CrateMat_Barrel_MAT_Height_Raw_1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[0].dn"
 		;
-connectAttr "place2dTexture5.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[1].dn"
+connectAttr "aiNormalMap1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[1].dn"
 		;
-connectAttr "place2dTexture3.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[2].dn"
+connectAttr "CrateMat_Barrel_MAT_Metallic_Raw_2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[2].dn"
 		;
-connectAttr "place2dTexture4.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[3].dn"
+connectAttr "place2dTexture1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[3].dn"
 		;
-connectAttr "CrateMat_Barrel_MAT_Normal_Raw_1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[4].dn"
+connectAttr "openPBRSurface1SG.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[4].dn"
 		;
-connectAttr "CrateMat_Barrel_MAT_BaseColor_sRGB_1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[5].dn"
+connectAttr "CrateMat_Barrel_MAT_Roughness_Raw_1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[5].dn"
 		;
-connectAttr "BarrelMatte.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[6].dn"
+connectAttr "CrateMat_Barrel_MAT_Normal_Raw_1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[6].dn"
 		;
-connectAttr "openPBRSurface1SG.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[7].dn"
+connectAttr "aiAreaLightShape1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[7].dn"
 		;
-connectAttr "place2dTexture1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[8].dn"
+connectAttr "displacementShader1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[8].dn"
 		;
-connectAttr "CrateMat_Barrel_MAT_Height_Raw_1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[9].dn"
+connectAttr "place2dTexture6.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[9].dn"
 		;
-connectAttr "place2dTexture6.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[10].dn"
+connectAttr "displacementShader1SG.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[10].dn"
 		;
-connectAttr "CrateMat_Barrel_MAT_Metallic_Raw_2.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[11].dn"
+connectAttr "CrateMat_Barrel_MAT_Emissive_1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[11].dn"
 		;
-connectAttr "aiAreaLightShape1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[12].dn"
+connectAttr "CrateMat_Barrel_MAT_BaseColor_sRGB_1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[12].dn"
 		;
-connectAttr "pointLightShape1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[13].dn"
+connectAttr "place2dTexture4.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[13].dn"
 		;
-connectAttr "aiNormalMap1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[14].dn"
+connectAttr "place2dTexture7.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[14].dn"
+		;
+connectAttr "BarrelMatte.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[15].dn"
+		;
+connectAttr "pointLightShape1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[16].dn"
+		;
+connectAttr "place2dTexture5.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[17].dn"
+		;
+connectAttr "place2dTexture3.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[18].dn"
 		;
 connectAttr "openPBRSurface1SG.pa" ":renderPartition.st" -na;
+connectAttr "displacementShader1SG.pa" ":renderPartition.st" -na;
 connectAttr "BarrelMatte.msg" ":defaultShaderList1.s" -na;
+connectAttr "displacementShader1.msg" ":defaultShaderList1.s" -na;
 connectAttr "place2dTexture1.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "place2dTexture3.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "place2dTexture4.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "place2dTexture5.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "place2dTexture6.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "aiNormalMap1.msg" ":defaultRenderUtilityList1.u" -na;
+connectAttr "place2dTexture7.msg" ":defaultRenderUtilityList1.u" -na;
 connectAttr "defaultRenderLayer.msg" ":defaultRenderingList1.r" -na;
 connectAttr "aiAreaLightShape1.ltd" ":lightList1.l" -na;
 connectAttr "pointLightShape1.ltd" ":lightList1.l" -na;
@@ -2483,6 +2615,7 @@ connectAttr "CrateMat_Barrel_MAT_BaseColor_sRGB_1.msg" ":defaultTextureList1.tx"
 		 -na;
 connectAttr "CrateMat_Barrel_MAT_Metallic_Raw_2.msg" ":defaultTextureList1.tx" -na
 		;
+connectAttr "CrateMat_Barrel_MAT_Emissive_1.msg" ":defaultTextureList1.tx" -na;
 connectAttr "aiAreaLight1.iog" ":defaultLightSet.dsm" -na;
 connectAttr "pointLight1.iog" ":defaultLightSet.dsm" -na;
 // End of LBarrel.ma
