@@ -1,6 +1,6 @@
 //Maya ASCII 2027 scene
 //Name: AquariumBlockout1.ma
-//Last modified: Mon, Nov 16, 2026 11:10:45 AM
+//Last modified: Mon, Nov 16, 2026 11:14:08 AM
 //Codeset: 1252
 requires maya "2027";
 requires "stereoCamera" "10.0";
@@ -13,13 +13,13 @@ fileInfo "product" "Maya 2027";
 fileInfo "version" "2027";
 fileInfo "cutIdentifier" "202604221258-70da84b25e";
 fileInfo "osv" "Windows 11 Enterprise v2009 (Build: 26200)";
-fileInfo "UUID" "F15F7EFA-44B4-52C1-27DB-C0922DC6AC6E";
+fileInfo "UUID" "37390A85-4090-148A-366D-D89EE5EC16BA";
 fileInfo "license" "education";
 createNode transform -s -n "persp";
 	rename -uid "7AC2D10A-4A45-6D15-3924-52AAFDE8A5A1";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 13.260598016024504 34.485184300703111 50.873934285254151 ;
-	setAttr ".r" -type "double3" 326.66164726747405 731.79999999922927 -4.0615239586719387e-16 ;
+	setAttr ".t" -type "double3" 24.70399799557261 28.802755409777948 50.045496689712948 ;
+	setAttr ".r" -type "double3" 335.06164726747352 748.19999999922788 9.0223029139059317e-16 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "FDF7E4E9-49E2-2ED0-00C0-EA93B64CAE19";
 	setAttr -k off ".v" no;
